@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 namespace Program1
 {
     public class Program
@@ -52,3 +52,15 @@ namespace Program1
     char c1 = 'a';
     char c2 = 'b';
     char c3 = c1 + c2;
+    // Declare string because above statements do not make sense 
+    string S1 = "a";
+    string S2 = "b";
+    string S3 = "c";
+    // Calculating a leap year the algorithm looks like the example below
+    // It's a leap year if 
+    // year is evenly divisible by 4 
+    // and, if it happens to be evenly divisble by 100
+    // it's also evnly divisble by 400
+    // Due to not having the tools to accomplish the task that way I can ask the DateTime type (which is also a value type like int)
+    DateTime thisYear = new DateTime(2011, 1, 1);
+    bool isLeapYear = DateTime.IsLeapYear(thisYear);
