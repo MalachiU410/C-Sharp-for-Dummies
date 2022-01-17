@@ -56,6 +56,39 @@ namespace Program1
             // Hello 
             Console.WriteLine("Press Enter to terminate...");
             Console.Read();
+            DateTime thisMoment = DateTime.Now;
+            DateTime anHourFromNow = thisMoment.AddHours(1);
+            // You can also extract specific parts of a DateTime
+            int year = DateTime.Now.Year; // For example 2007
+            DayOfWeek dayofWeek = DateTime.Now.DayOfWeek; // For example Sunday 
+            // If you print that DayOfWeek object, it prints something like "Sunday"
+            // You can also do other manipulations of DateTimes
+            DateTime date = DateTime.Today;
+            // Get just the date part 
+            TimeSpan time = thisMoment.TimeOfDay;
+            // Get just the time part 
+            TimeSpan duration = new TimeSpan(3, 0, 0, 0);
+            // Specify length in days 
+            DateTime threeDaysFromNow = thisMoment.Add(duration);
+            // The first two lines just extract portions of information in a DateTime ex. time & date
+            // The next two lines add a duration (legnth of time) to a DateTime 
+            // A duration differs from a moment in time;
+            // You specify (durations) with the TimeSpan class
+            // You specify (moments) with DateTime 
+            // The third line sets up a TimeSpan of (Three Days, Zero Hours, Zero Minutes, and Zero Seconds 
+            // The fourth line adds the three days duration to the DateTime respresenting right now
+            // Resulting in a new DateTime whose day component is three greater than the day component for "thisMoment"
+            // Subtracting a DateTime from another DateTime (or a TimeSpan from a DateTime) returns a DateTime
+            TimeSpan duration1 = new TimeSpan(1, 0, 0); // One hour later.
+            // Since Today gives 12:00:00 AM, the following gives 1:00:00 AM:
+            DateTime anHourAfterMidnight = DateTime.Today.Add(duration1);
+            Console.WriteLine ("An hour after midnight will be {0}", anHourAfterMidnight);
+            DateTime midnight = anHourAfterMidnight.Subtract(duration1);
+            Console.WriteLine("An hour before 1am is {0}", midnight);
+            // The first line of the proceeding code creates a TimeSpan of one hour
+            // The second line gets the date (actually, midnight this morning)
+            // the adds the one hour span to it, resulting in a DateTime respresenting 1:00 a.m. today
+            // The next-to-last line subtracts a one hour duration from 1:00 a.m. to get 12:00 a.m. (midnight)
         }
     }
 }
