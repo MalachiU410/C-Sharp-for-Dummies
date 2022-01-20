@@ -24,7 +24,7 @@ namespace Program1
             // The following is not legal 
             string someString = "This is a line and so is this";
             // However the following is legal 
-             someString = "This is a line \and so is this";
+            someString = "This is a line \and so is this";
             // The + operator concatenates two strings into one 
             string s = "this is a phrase" + "and so is this";
             // the lines of code above set the string variable s equal to this character string
@@ -35,9 +35,9 @@ namespace Program1
             // Best practice is to initialize strings using the "String.Empty" value
             // Which is the same thing as "" and less prone to misinterpretation
             string mysecretName = string.Empty; // A property of the string type 
-                          // Comparing String and Char 
-                          // string ("") multiple characters 
-                          // char ('') single characters 
+                                                // Comparing String and Char 
+                                                // string ("") multiple characters 
+                                                // char ('') single characters 
             char c1 = 'a';
             char c2 = 'b';
             //char c3 = c1 + c2;
@@ -82,13 +82,80 @@ namespace Program1
             TimeSpan duration1 = new TimeSpan(1, 0, 0); // One hour later.
             // Since Today gives 12:00:00 AM, the following gives 1:00:00 AM:
             DateTime anHourAfterMidnight = DateTime.Today.Add(duration1);
-            Console.WriteLine ("An hour after midnight will be {0}", anHourAfterMidnight);
+            Console.WriteLine("An hour after midnight will be {0}", anHourAfterMidnight);
             DateTime midnight = anHourAfterMidnight.Subtract(duration1);
             Console.WriteLine("An hour before 1am is {0}", midnight);
             // The first line of the proceeding code creates a TimeSpan of one hour
             // The second line gets the date (actually, midnight this morning)
             // the adds the one hour span to it, resulting in a DateTime respresenting 1:00 a.m. today
             // The next-to-last line subtracts a one hour duration from 1:00 a.m. to get 12:00 a.m. (midnight)
+            // Every expression has a value and a type
+            // In a declaration such as "int n" you can easily see that the variable "n" is an int
+            // Further you can reasonably assume that the type of calculation of n + 1 is an int
+            // However what type if the constant 1 ?
+            // The type of constant depends on two things its value and the presence of an optional descriptor at the end of the constant 
+            // Any integer type less than 2 billion is assumed to be an int 
+            // Numbers larger than 2 billion are assumed to be a long
+            // Any floating-point number is assumed to be a double
+            // 1 = int
+            // 1u = unsigned int
+            // 1L = long int
+            // 1.0 = double 
+            // 1.0F = float 
+            // 1M = decimal
+            // true = bool
+            // false = bool
+            // 'a' = char 
+            // '\n' = char (the character new line)
+            // '\x123' = char (the character whose numeric value is a hex 123)
+            // hex = (hexadecimal) numbers in base 16 rather than 10
+            // Convert an int into a long
+            int intValue = 10;
+            long longValue;
+            longValue = intValue; // This is okay
+            // An int can be stored into a long because any possible value of an int can be stored in a long
+            // and because they are both counting numbers
+            // The conversion that takes place automatically without command is called an implict conversion
+            // A conversion in the opposite direction can cause problems
+            // For example this line is illegal
+            long longValue = 10;
+            int intValue;
+            intValue = longValue // This is illegal
+            // It is illegal because when converting a long into an int data can be lost
+            // So C # will generate an error code for this matter
+            // If you know that the value won't exceed int numerical limitation you can override the system
+            // With a cast
+            long longValue 10;
+            int intValue;
+            intValue = (int)longValue; // This is now legal
+            // To use a cast you must place the name of the type you want in parentheses and put it immediately in front of the value you want to convert
+            // This cast forces C # to convert the long named longValue into an int and assumes you know what you are doing
+            // A counting number can be converted into a floating-point number automatically
+            // But converting a floating-point into a counting number requires a cast
+            double doubleValue = 10.0;
+            long longValue = (long)doubleValue;
+            // All conversions to and from a decimal requires a cast
+            // In fact, all numeric types can be converted into all other numeric types through the application of a cast
+            // Neither bool nor string can be converted directly into the other type
+            // When declaring a variable so far we have specified its exact data type like this 
+            int i = 5;
+            string s = "Hello C#";
+            double d = 1.0;
+            // You are able to offload some of that work onto the C# compiler using the var keyword
+            var i = 5;
+            var s = "Hello C# 4.0";
+            var d = 1.0;
+            // Now the compiler infers the data type for you
+            // It looks at the stuff on the right side of the assignment (=) to see what type the left side is
+            // The computer mostly does the calculating for you
+            // For example you have an expression like this
+            var x = 3.0 + 2 - 1.5;
+            // The compiler can figure out that (x) is a doubleValue
+            // It looks at (3.0) and (1.5) and sees that they're of type double
+            // Then it notices that (2) is an int
+            // Which the compiler can convert implicitly to a double for the calculation
+            // All the additional terms in (x)'s intitialization expression ends up as double types
+            // So the inferred type of x is double
         }
     }
 }
