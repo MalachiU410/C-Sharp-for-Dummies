@@ -156,6 +156,14 @@ namespace Program1
             // Which the compiler can convert implicitly to a double for the calculation
             // All the additional terms in (x)'s intitialization expression ends up as double types
             // So the inferred type of x is double
+            // But now you can simply utter the magic word "var" and supply an initialization expression
+            // And the compiler does the rest
+            var aVariable = <initialization expression here>;
+            // var in C# does not signify a variant type
+            // The object you declare with var definitely has a C# data type
+            // Such as int, string, or double you just dont have to declare what it is
+            var aString = "Hello C# 3.0";
+            Console.WriteLine (aString.GetType ().ToString ());
         }
     }
 }
